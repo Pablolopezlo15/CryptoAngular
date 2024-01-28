@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service';
 import { CabeceraComponent } from '../cabecera/cabecera.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterOutlet, Router } from '@angular/router';
+import { BasedatosService } from '../basedatos.service';
 
 @Component({
   selector: 'app-detalle',
@@ -18,7 +20,7 @@ export class DetalleComponent implements OnInit{
   cryptoDetalle:any = null;
   cargando: boolean = false;
 
-  constructor(public ajax: PeticionesAjaxServiceService) { 
+  constructor(public ajax: PeticionesAjaxServiceService, private router: Router, private bd: BasedatosService) { 
     
   }
 
@@ -35,5 +37,9 @@ export class DetalleComponent implements OnInit{
       this.cargando = false;
     });
   }
+
+  // guardarCrypto() {
+  //   this.bd.subirDatosFS(this.cryptoDetalle.id, );
+  // }
 
 }

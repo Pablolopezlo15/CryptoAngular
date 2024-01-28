@@ -1,6 +1,44 @@
 <app-cabecera></app-cabecera>
 
 
+<div class="img-zigzag">
+    <img src="../../assets/images/Untitled.png" alt="break">
+</div>
 
-
+<section class="content">
+    <div class="content">
+        <h1>Monedas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Simbolo</th>
+                    <th>Ranking</th>
+                    <th>Precio</th>
+                    <th>Market Cap</th>
+                    <th>24h Volumen</th>
+                    <th>Circulante</th>
+                    <th>Porcentaje 1h</th>
+                    <th>Porcentaje 24h</th>
+                    <th>Porcentaje 7d</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let moneda of monedas">
+                    <td>{{moneda.name}}</td>
+                    <td>{{moneda.symbol}}</td>
+                    <td>{{moneda.rank}}</td>
+                    <td>{{moneda.price_usd}}</td>
+                    <td>{{moneda.market_cap_usd}}</td>
+                    <td>{{moneda['24h_volume_usd']}}</td>
+                    <td>{{moneda.available_supply}}</td>
+                    <td>{{moneda.percent_change_1h}}</td>
+                    <td>{{moneda.percent_change_24h}}</td>
+                    <td>{{moneda.percent_change_7d}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</section>
 <app-footer></app-footer>
