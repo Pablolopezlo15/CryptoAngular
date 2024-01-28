@@ -1,0 +1,30 @@
+    <!----------header---------->
+    <header>
+        <div class="content">
+            <div class="left-header">
+                <nav>
+                    <ul>
+                        <li>
+                            <a routerLink="/">CryptoAngular</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="right-header">
+                <nav>
+                    <ul>
+                        <li><a routerLink="/search">Busca tu cryptomoneda</a></li>
+                        <li *ngIf="!user"><a routerLink="/iniciarSesion">Iniciar Sesión</a></li>
+                        <li *ngIf="user"><p (click)="mostrarCryptos(uid)">Mis Cryptos</p></li>
+                        <li *ngIf="user">
+                            <p *ngIf="user.displayName">{{ user.displayName }}</p>
+                            <p *ngIf="!user.displayName">{{ user.email }}</p>
+                        </li>
+                        <li *ngIf="user" (click)="cerrarSesion()"><p>Cerrar Sesión</p></li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>

@@ -1,0 +1,44 @@
+<app-cabecera></app-cabecera>
+
+<section class="about" id="about">
+    <div class="content" *ngIf="cargando">
+        Cargando...
+    </div>
+    <div class="content" *ngIf="!cargando">
+        <div class="header-center">
+            <h2 class="text-header">{{ cryptoDetalle.name }}</h2>
+        </div>
+        <div class="side-1">
+            <div class="image-section">
+                <div>
+                    <img [src]="cryptoDetalle.image.large">
+                    <!-- <img [src]="cryptoDetalle.data.sparkline" alt=""> -->
+
+                </div>
+            </div>
+            <div class="text-section">
+                <div class="uk-panel">
+                    <a class="button">Seguir Crypto</a>
+                    <h3>{{ cryptoDetalle.market_data.current_price.eur }} €</h3>
+                    <p>{{ cryptoDetalle.description.es }}</p>
+                    <!-- <div class="row">
+                        <div class="uk-panel">
+                            <h5>4,500+</h5>
+                            <span>Collections Indexed <br>
+                                every 5mins.</span>
+                        </div>
+                        <div class="uk-panel">
+                            <h5>2.5x</h5>
+                            <span>Difference in Floor & Estimated <br>Value</span>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<app-footer></app-footer>
