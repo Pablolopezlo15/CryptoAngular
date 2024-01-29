@@ -18,21 +18,15 @@ import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service
 })
 export class MonedasComponent implements OnInit{
 
-  monedas: any;
+  monedas: any[] = [];
 
   constructor(public ajax: PeticionesAjaxServiceService, private router: Router) { 
   }
 
-  ngOnInit(): void {
-    // this.ajax.obtenerDatosFS();    
-    this.monedas = this.ajax.obtenerDatosFS();
-
-    for (let i = 0; i < this.monedas.length; i++) {
-      this.ajax.peticionAjaxDetalle(this.monedas[i].id) ;
-    }
-
+  ngOnInit() {
+    this.ajax.obtenerDatosFS();
+    this.monedas = this.ajax.getDatosAPI();
   }
-
 
 
 }

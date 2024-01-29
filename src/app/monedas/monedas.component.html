@@ -11,6 +11,7 @@
         <table>
             <thead>
                 <tr>
+                    <th></th>
                     <th>Nombre</th>
                     <th>Simbolo</th>
                     <th>Ranking</th>
@@ -25,16 +26,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let moneda of monedas">
+                    <td><img [src]="moneda.image.thumb" alt=""></td>
                     <td>{{moneda.name}}</td>
                     <td>{{moneda.symbol}}</td>
-                    <td>{{moneda.rank}}</td>
-                    <td>{{moneda.price_usd}}</td>
-                    <td>{{moneda.market_cap_usd}}</td>
-                    <td>{{moneda['24h_volume_usd']}}</td>
-                    <td>{{moneda.available_supply}}</td>
-                    <td>{{moneda.percent_change_1h}}</td>
-                    <td>{{moneda.percent_change_24h}}</td>
-                    <td>{{moneda.percent_change_7d}}</td>
+                    <td>{{moneda.cmc_rank}}</td>
                 </tr>
             </tbody>
         </table>
