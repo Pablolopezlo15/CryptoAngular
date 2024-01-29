@@ -42,7 +42,6 @@
             </div>
             
         </div>
-
     </div>
 </section>
 
@@ -51,17 +50,60 @@
         <div class="header-center">
             <h2 class="text-header">Las cryptos más buscadas</h2>
         </div>
-        <div class="cols">
-            <div class="card" *ngFor="let coin of ajax.masBuscadas">
-                <span (click)="mostrarDetalle(coin.item.id)"><a>{{ coin.item.name }}</a></span>
+        <!-- <div class="cols"> -->
+            <!-- <div class="card" *ngFor="let coin of ajax.masBuscadas"> -->
+
+
+                <table class="coin-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Simbolo</th>
+                            <th>Ranking</th>
+                            <th>Precio</th>
+                            <th>Market Cap</th>
+                            <th>24h Volumen</th>
+                            <th>Sparkline</th>
+                            <th>Circulante</th>
+                            <th>Porcentaje 1h</th>
+                            <th>Porcentaje 24h</th>
+                            <th>Porcentaje 7d</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let coin of ajax.masBuscadas" class="coin-row">
+                        <tr>
+                            <td><img [src]="coin.item.thumb" alt=""></td>
+                            <td>{{ coin.item.name }}</td>
+                            <td>{{ coin.item.symbol }}</td>
+                            <td>{{ coin.item.cmc_rank }}</td>
+                            <td>{{ coin.item.data.price }} $</td>
+                            <td>{{ coin.item.data.market_cap }} $</td>
+                            <td>{{ coin.item.data.volume_24h }} $</td>
+                            <td><img [src]="coin.item.data.sparkline" alt=""></td>
+                            <td>{{ coin.item.data.circulating_supply }}</td>
+                            <td>{{ coin.item.data.percent_change_1h }} %</td>
+                            <td>{{ coin.item.data.percent_change_24h }} %</td>
+                            <td>{{ coin.item.data.percent_change_7d }} %</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+
+
+                <!-- <span (click)="mostrarDetalle(coin.item.id)"><a>{{ coin.item.name }}</a></span>
                 <div class="card-margin-top">
                     <h3>Precio: {{ coin.item.data.price }} $</h3>
                     <img [src]="coin.item.large">
                     <img [src]="coin.item.data.sparkline">
-                </div>
-            </div>
-        </div>
+                </div> -->
+
+
+            <!-- </div>
+        </div> -->
     </div>
 </section>
+
+
 
 <app-footer></app-footer>

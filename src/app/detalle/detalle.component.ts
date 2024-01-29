@@ -6,6 +6,7 @@ import { CabeceraComponent } from '../cabecera/cabecera.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet, Router } from '@angular/router';
 import { BasedatosService } from '../basedatos.service';
+import { getAuth } from "firebase/auth";
 
 @Component({
   selector: 'app-detalle',
@@ -19,6 +20,9 @@ export class DetalleComponent implements OnInit{
   @Input() id: string = "";
   cryptoDetalle:any = null;
   cargando: boolean = false;
+
+  auth = getAuth();
+  uid = this.auth.currentUser?.uid;
 
   constructor(public ajax: PeticionesAjaxServiceService, private router: Router, private bd: BasedatosService) { 
     
@@ -39,7 +43,30 @@ export class DetalleComponent implements OnInit{
   }
 
   // guardarCrypto() {
-  //   this.bd.subirDatosFS(this.cryptoDetalle.id, );
+  //   this.bd.datos = {
+  //     uid: this.uid,
+  //     id: this.cryptoDetalle.id
+  //   };
+
+  //   this.bd.subirDatosFS(this.bd.datos, this.bd.coleccion);
   // }
+
+  async guardarCrypto() {
+    if (this.uid && this.cryptoDetalle && this.cryptoDetalle.id) {
+      const yaGuardada = await this.bd.estaGuardada(this.uid, this.cryptoDetalle.id);
+      if (yaGuardada) {
+        console.log('Esta criptomoneda ya está guardada');
+      } else {
+        this.bd.datos = {
+          uid: this.uid,
+          id: this.cryptoDetalle.id
+        };
+    
+        this.bd.subirDatosFS(this.bd.datos, this.bd.coleccion);
+      }
+    } else {
+      console.log('UID o ID de criptomoneda no definidos');
+    }
+  }
 
 }

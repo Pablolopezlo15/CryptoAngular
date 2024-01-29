@@ -1594,3 +1594,30 @@ footer .container .end-footer p {
     opacity: 0.1;
   }
   
+
+
+
+  .coin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.coin-table th, .coin-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.coin-row:hover {
+    background-color: #242424;
+}
+
+@media screen and (max-width: 600px) {
+    .coin-table {
+        overflow-x: auto;
+    }
+
+    .coin-table th, .coin-table td {
+        white-space: nowrap;
+    }
+}

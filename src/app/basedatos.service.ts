@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { getAuth } from "firebase/auth";
-import { addDoc, getDocs, collection } from 'firebase/firestore';
+import { addDoc, getDocs, collection, query, where } from 'firebase/firestore';
 
 
 @Injectable({
@@ -31,6 +31,11 @@ export class BasedatosService {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+  }
+
+  async estaGuardada(uid: string, id: string) {
+    const querySnapshot = await getDocs(query(collection(this.firestore, this.coleccion), where('uid', '==', uid), where('id', '==', id)));
+    return !querySnapshot.empty;
   }
 
 }

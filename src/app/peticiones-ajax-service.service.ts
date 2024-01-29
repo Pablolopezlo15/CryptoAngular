@@ -61,7 +61,8 @@ export class PeticionesAjaxServiceService {
     if (this.auth.currentUser) {
       this.uid = this.auth.currentUser.uid;
       const datosBaseDatos = query(collection(this.firestore, "monedas"), where("uid", "==", this.uid));
-  
+
+      this.datosUsuario = [];
       getDocs(datosBaseDatos).then((response) => {
         this.datosFS = response.docs.map(doc => doc.data());
         console.log(this.datosFS);

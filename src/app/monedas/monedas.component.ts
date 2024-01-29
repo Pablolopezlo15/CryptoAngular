@@ -24,6 +24,7 @@ export class MonedasComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.monedas = [];
     this.ajax.obtenerDatosFS();
     this.monedas = this.ajax.getDatosAPI();
   }
