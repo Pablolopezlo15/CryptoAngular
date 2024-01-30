@@ -19,6 +19,7 @@ import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service
 export class MonedasComponent implements OnInit{
 
   monedas: any[] = [];
+  id: string = "";
 
   constructor(public ajax: PeticionesAjaxServiceService, private router: Router) { 
   }
@@ -28,6 +29,12 @@ export class MonedasComponent implements OnInit{
     this.ajax.obtenerDatosFS();
     this.monedas = this.ajax.getDatosAPI();
   }
+
+  mostrarDetalle(id: any) {
+    this.id = id;
+    this.router.navigate(['/detalle', this.id]);
+  }
+
 
 
 }

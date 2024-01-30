@@ -10,7 +10,7 @@
         </div>
         <div class="side-1">
             <div class="image-section">
-                <div>
+                <div class="image-section-detalle">
                     <img [src]="cryptoDetalle.image.large">
                     <!-- <img [src]="cryptoDetalle.data.sparkline" alt=""> -->
 
@@ -20,7 +20,8 @@
                 <div class="uk-panel">
                     <a class="button" (click)="guardarCrypto()">Seguir Crypto</a>
                     <h3>{{ cryptoDetalle.market_data.current_price.eur }} €</h3>
-                    <p>{{ cryptoDetalle.description.es }}</p>
+                    <h4>Descripción</h4>
+                    <p class="pequeño">{{ cryptoDetalle.description.es }}</p>
                     <!-- <div class="row">
                         <div class="uk-panel">
                             <h5>4,500+</h5>
@@ -33,12 +34,19 @@
                         </div>
                     </div> -->
 
+
                 </div>
+
             </div>
         </div>
     </div>
 </section>
-
-
+<script>
+    window.onload = function () {
+        
+    }
+</script>
+<div id="chartContainer" style="height: 300px; width: 100%; z-index: 5;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 
 <app-footer></app-footer>

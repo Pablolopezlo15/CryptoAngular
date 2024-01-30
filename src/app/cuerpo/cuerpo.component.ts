@@ -47,7 +47,7 @@ export class CuerpoComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.ajax.obtenerDatosFS();
+    // this.ajax.obtenerDatosFS();
     this.obtenDatosMasBuscadas();
   }
 

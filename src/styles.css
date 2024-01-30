@@ -47,6 +47,10 @@ p{
     margin-bottom: 0;
 }
 
+tr:hover{
+    cursor: pointer;
+}
+
 a.button {
     display: inline-flex;
     color: #fff;
@@ -505,8 +509,15 @@ header .left-header nav ul li a:hover {
     justify-content: space-between;
 }
 
+.image-section-detalle {
+    width: 60%;
+}
+
 .about .content .image-section,
 .about .content .text-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 50%;
     height: 100%;
@@ -549,8 +560,8 @@ header .left-header nav ul li a:hover {
 
 .about .content .side-2 .text-section p,
 .about .content .side-1 .text-section p {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 12px;
+    line-height: 15px;
     font-weight: 400;
 }
 

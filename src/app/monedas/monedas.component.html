@@ -34,7 +34,7 @@
             </tbody>
         </table> -->
 
-        <table class="coin-table">
+        <!-- <table class="coin-table">
             <thead>
                 <tr>
                     <th></th>
@@ -54,7 +54,7 @@
                 <tr>
                     <td><img [src]="moneda.image.thumb" alt=""></td>
                     <td>{{moneda.name}}</td>
-                    <!-- <td>{{moneda.cmc_rank}}</td>
+                    <td>{{moneda.cmc_rank}}</td>
                     <td>{{moneda.quote.USD.price}} $</td>
                     <td>{{moneda.quote.USD.market_cap}} $</td>
                     <td>{{moneda.quote.USD.volume_24h}} $</td>
@@ -63,7 +63,32 @@
                     <td>{{moneda.quote.USD.percent_change_1h}} %</td>
                     <td>{{moneda.quote.USD.percent_change_24h}} %</td>
                     <td>{{moneda.quote.USD.percent_change_7d}} %</td>
-                </tr> -->
+                </tr>
+            </tbody>
+        </table> -->
+
+        <table class="coin-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>Simbolo</th>
+                    <th>Ranking</th>
+                    <th>Precio</th>
+                    <th>Capitalización</th>
+                    <!-- <th>Sparkline</th> -->
+                </tr>
+            </thead>
+            <tbody *ngFor="let coin of monedas" class="coin-row">
+                <tr (click)="mostrarDetalle(coin.item.id)">
+                    <td><img [src]="coin.image.thumb" alt=""></td>
+                    <td>{{ coin.name }}</td>
+                    <td>{{ coin.symbol }}</td>
+                    <td>{{ coin.market_cap_rank }}</td>
+                    <td>{{ coin.market_data.current_price.eur }} €</td>
+                    <td>{{ coin.market_data.market_cap.eur }} $</td>
+                    <!-- <td><img [src]="coin.item.data.sparkline" alt=""></td> -->
+                </tr>
             </tbody>
         </table>
 
