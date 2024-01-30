@@ -30,8 +30,8 @@
                     <p class="pequeño" *ngIf="!cryptoDetalle.description.es" >{{ cryptoDetalle.description.en }}</p>
                     <p class="pequeño" *ngIf="!cryptoDetalle.description.en" >Descripción no disponible</p>
                     <h4>Links</h4>
-                    <p><a>{{ cryptoDetalle.links.homepage[0] }}</a></p>
-                    <p>{{ cryptoDetalle.links.repos_url.github[0] }}</p>
+                    <p><a [attr.href]="cryptoDetalle.links.homepage[0]" target="_blank">{{ cryptoDetalle.links.homepage[0] }}</a></p>
+                    <p ><a [attr.href]="cryptoDetalle.links.repos_url.github[0]" target="_blank">{{ cryptoDetalle.links.repos_url.github[0] }}</a></p>
                 </div>
 
             </div>
@@ -40,20 +40,4 @@
 </section>
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script>
-window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer", {
-        title: {
-            text: "Sparkline 7D Price"
-        },
-        data: [{
-            type: "line",
-            dataPoints: dataPoints
-        }]
-    });
-    chart.render();
-}
-</script>
-
 <app-footer></app-footer>

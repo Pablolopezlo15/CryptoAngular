@@ -23,6 +23,7 @@
     "@canvasjs/charts": "^3.7.36",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@popperjs/core": "^2.11.8",
+    "@types/canvasjs": "^1.9.11",
     "bootstrap": "^5.3.2",
     "canvasjs": "^1.8.3",
     "firebase": "^10.7.2",

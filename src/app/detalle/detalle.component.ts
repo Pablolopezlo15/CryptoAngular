@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service';
@@ -7,6 +7,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet, Router } from '@angular/router';
 import { BasedatosService } from '../basedatos.service';
 import { getAuth } from "firebase/auth";
+import { CanvasJS } from '@canvasjs/angular-charts';
 
 @Component({
   selector: 'app-detalle',
@@ -16,7 +17,7 @@ import { getAuth } from "firebase/auth";
   styleUrl: './detalle.component.css'
 })
 
-export class DetalleComponent implements OnInit{
+export class DetalleComponent implements OnInit, AfterViewInit{
   @Input() id: string = "";
   cryptoDetalle:any = null;
   cargando: boolean = false;
@@ -37,7 +38,7 @@ export class DetalleComponent implements OnInit{
     this.cargando = true;
     this.ajax.peticionAjaxDetalle(this.id).subscribe((datos: any) => {
       this.cryptoDetalle = datos;
-      // console.log(this.cryptoDetalle);
+      console.log(this.cryptoDetalle);
       this.cargando = false;
     });
   }
@@ -67,6 +68,30 @@ export class DetalleComponent implements OnInit{
     }
   }
 
+  ngAfterViewInit() {
+    let chart = new CanvasJS.Chart("chartContainer", {
+      theme: "light2",
+      animationEnabled: true,
+      zoomEnabled: true,
+      title: {
+        text: "Try Zooming and Panning"
+      },
+      data: [{
+        type: "area",
+        dataPoints: this.getDataPoints()
+      }]
+    });
 
+    chart.render();
+  }
+
+  getDataPoints() {
+    if (this.cryptoDetalle && this.cryptoDetalle.market_data && this.cryptoDetalle.market_data.sparkline_7d && this.cryptoDetalle.market_data.sparkline_7d.price) {
+      return this.cryptoDetalle.market_data.sparkline_7d.price.map((value:any, index:any) => ({ x: index, y: value }));
+    }
+    return [];
+  }
+
+  
 
 }
