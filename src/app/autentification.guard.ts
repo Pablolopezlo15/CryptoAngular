@@ -1,20 +1,24 @@
-import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { Injectable, inject } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
+import { Firestore } from '@angular/fire/firestore';
 
-export const autentificationGuard: CanActivateFn = (route, state) => {
-  // return isLogedIn();
-  return true;
-};
+@Injectable({
+  providedIn: 'root'
+})
+export class AutentificationGuard implements CanActivate {
+  constructor(private router: Router) {}
 
+  firestore = inject(Firestore);
 
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const auth = getAuth();
+    const isLoggedIn = auth.currentUser !== null;
 
-// const auth = getAuth();
+    if (!isLoggedIn) {
+      this.router.navigate(['/iniciarSesion']);
+    }
 
-// function isLogedIn(): boolean{
-//   if (auth.currentUser) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
+    return isLoggedIn;
+  }
+}

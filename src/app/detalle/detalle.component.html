@@ -7,8 +7,8 @@
     <div class="content" *ngIf="!cargando">
         <div class="header-center">
             <h2 class="text-header">{{ cryptoDetalle.name }}</h2>
-            <p *ngIf="yaGuardadaError">{{ yaGuardadaError }}</p>
-            <p *ngIf="guardada">{{ guardada }}</p>
+            <p *ngIf="yaGuardadaError" class="errores">{{ yaGuardadaError }}</p>
+            <p *ngIf="guardada" class="exito">{{ guardada }}</p>
         </div>
         <div class="side-1">
             <div class="image-section">
@@ -21,23 +21,39 @@
             <div class="text-section">
                 <div class="uk-panel">
                     <a class="button" (click)="guardarCrypto()">Seguir Crypto</a>
-                    <h3>{{ cryptoDetalle.market_data.current_price.eur }} €</h3>
+                    <h4> Precio: {{ cryptoDetalle.market_data.current_price.eur }} €</h4>
+                    <p>Símbolo: {{ cryptoDetalle.symbol }}</p>
+                    <p>Ranking: {{ cryptoDetalle.market_cap_rank }}</p>
+                    <p>Fecha de salida: {{ cryptoDetalle.genesis_date }}</p>
                     <h4>Descripción</h4>
-                    <p class="pequeño">{{ cryptoDetalle.description.es }}</p>
-
-
+                    <p class="pequeño" *ngIf="cryptoDetalle.description.es" >{{ cryptoDetalle.description.es }}</p>
+                    <p class="pequeño" *ngIf="!cryptoDetalle.description.es" >{{ cryptoDetalle.description.en }}</p>
+                    <p class="pequeño" *ngIf="!cryptoDetalle.description.en" >Descripción no disponible</p>
+                    <h4>Links</h4>
+                    <p><a>{{ cryptoDetalle.links.homepage[0] }}</a></p>
+                    <p>{{ cryptoDetalle.links.repos_url.github[0] }}</p>
                 </div>
 
             </div>
         </div>
     </div>
 </section>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
-    window.onload = function () {
-        
-    }
+window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+            text: "Sparkline 7D Price"
+        },
+        data: [{
+            type: "line",
+            dataPoints: dataPoints
+        }]
+    });
+    chart.render();
+}
 </script>
-<div id="chartContainer" style="height: 300px; width: 100%; z-index: 5;"></div>
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 
 <app-footer></app-footer>

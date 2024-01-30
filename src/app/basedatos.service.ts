@@ -27,9 +27,9 @@ export class BasedatosService {
     
     try {
       const docRef = addDoc(collection(this.firestore, coleccion), datos);
-      console.log("Document written with ID: ", docRef);
+      console.log("Moneda Añadida con id: ", docRef);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error añadiendo moneda: ", e);
     }
   }
 

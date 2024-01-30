@@ -21,7 +21,7 @@ export class CabeceraComponent implements OnInit{
   user = this.auth.currentUser;
   uid = this.user?.uid;
   ngOnInit(): void {
-    console.log(this.uid);
+    // console.log(this.uid);
   }
 
   firestore = inject(Firestore);
@@ -46,7 +46,7 @@ export class CabeceraComponent implements OnInit{
 
   mostrarCryptos(uid: any) {
     this.uid = uid;
-    console.log(this.uid);
+    // console.log(this.uid);
     this.router.navigate(['/monedas', this.uid]);
   }
 

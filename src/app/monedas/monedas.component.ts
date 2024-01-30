@@ -42,6 +42,8 @@ export class MonedasComponent implements OnInit{
   eliminarCrypto(MonedaID:any) {
     if (this.uid) {
       this.bd.eliminarMoneda(this.uid, MonedaID);
+      this.ajax.obtenerDatosFS();
+      this.monedas = this.ajax.getDatosAPI();
     }
   }
 

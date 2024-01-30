@@ -33,23 +33,15 @@ export class DetalleComponent implements OnInit{
   }
 
   obtenDatosDetalle() {
-    console.log(this.id);
+    // console.log(this.id);
     this.cargando = true;
     this.ajax.peticionAjaxDetalle(this.id).subscribe((datos: any) => {
       this.cryptoDetalle = datos;
-      console.log(this.cryptoDetalle);
+      // console.log(this.cryptoDetalle);
       this.cargando = false;
     });
   }
 
-  // guardarCrypto() {
-  //   this.bd.datos = {
-  //     uid: this.uid,
-  //     id: this.cryptoDetalle.id
-  //   };
-
-  //   this.bd.subirDatosFS(this.bd.datos, this.bd.coleccion);
-  // }
   yaGuardadaError = "";
   guardada = "";
   async guardarCrypto() {

@@ -65,26 +65,22 @@ export class PeticionesAjaxServiceService {
       this.datosUsuario = [];
       getDocs(datosBaseDatos).then((response) => {
         this.datosFS = response.docs.map(doc => doc.data());
-        console.log(this.datosFS);
+        // console.log(this.datosFS);
         for (let i = 0; i < this.datosFS.length; i++) {
           this.peticionAjaxDetalle(this.datosFS[i].id).subscribe((datos:any) => {
-            console.log(datos);
+            // console.log(datos);
             this.datosFS[i].detalle = datos;
             this.datosUsuario.push(datos);
           });
         }
       })
     } else {
-      console.log('No user is signed in.');
+      console.log('No esta registrado.');
     }
   }
 
   getDatosAPI(): any[] {
     return this.datosUsuario;
   }
-
-  // ngOnInit(): void {
-  //   this.obtenerDatosFS();
-  // }
 
 }

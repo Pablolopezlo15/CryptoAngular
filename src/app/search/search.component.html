@@ -33,13 +33,16 @@
 
         <div class="boxes">
             <div class="card" *ngFor="let crypto of ajax.datosAPI">
-                <div class="card-image">
-                    <img [src]="crypto.large" alt="art">
+                <div class="hover" (click)="mostrarDetalle(crypto.id)">
+                    <div class="card-image">
+                        <img [src]="crypto.large" alt="art">
+                    </div>
+                    <div class="card-text">
+                        <h2><a>{{ crypto.name }}</a></h2>
+                        <p>Ranking: {{ crypto.market_cap_rank }}</p>
+                    </div>
                 </div>
-                <div class="card-text">
-                    <h2><a (click)="mostrarDetalle(crypto.id)">{{ crypto.name }}</a></h2>
-                    <p>Ranking: {{ crypto.market_cap_rank }}</p>
-                </div>
+
             </div>
             
         </div>
