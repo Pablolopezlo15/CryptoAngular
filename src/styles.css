@@ -91,7 +91,7 @@ a.button:hover {
 header {
     position: fixed;
     background: transparent;
-    height: 100px;
+    /* height: 100px; */
     z-index: 9999;
     top: 0;
     left: 0;
@@ -262,7 +262,7 @@ header .left-header nav ul li a:hover {
 }
 
 .collection-carders .content .boxes .card .card-image {
-    height: 325px;
+    /* height: 325px; */
     overflow: hidden;
 }
 
@@ -988,7 +988,7 @@ ul li:nth-child(even) .circle {
 
 .FAQ {
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding-left: var(--padding);
     padding-right: var(--padding);
 }
@@ -1631,4 +1631,17 @@ footer .container .end-footer p {
     .coin-table th, .coin-table td {
         white-space: nowrap;
     }
+}
+
+.navbar{
+    background-color: #1b112800;
+    color: white;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover{
+    color: #7e1bff;
 }

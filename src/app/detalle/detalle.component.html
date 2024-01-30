@@ -7,12 +7,14 @@
     <div class="content" *ngIf="!cargando">
         <div class="header-center">
             <h2 class="text-header">{{ cryptoDetalle.name }}</h2>
+            <p *ngIf="yaGuardadaError">{{ yaGuardadaError }}</p>
+            <p *ngIf="guardada">{{ guardada }}</p>
         </div>
         <div class="side-1">
             <div class="image-section">
                 <div class="image-section-detalle">
                     <img [src]="cryptoDetalle.image.large">
-                    <!-- <img [src]="cryptoDetalle.data.sparkline" alt=""> -->
+
 
                 </div>
             </div>
@@ -22,17 +24,6 @@
                     <h3>{{ cryptoDetalle.market_data.current_price.eur }} €</h3>
                     <h4>Descripción</h4>
                     <p class="pequeño">{{ cryptoDetalle.description.es }}</p>
-                    <!-- <div class="row">
-                        <div class="uk-panel">
-                            <h5>4,500+</h5>
-                            <span>Collections Indexed <br>
-                                every 5mins.</span>
-                        </div>
-                        <div class="uk-panel">
-                            <h5>2.5x</h5>
-                            <span>Difference in Floor & Estimated <br>Value</span>
-                        </div>
-                    </div> -->
 
 
                 </div>

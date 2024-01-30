@@ -6,8 +6,8 @@
 </div>
 
 <section class="content">
-    <div class="content">
-        <h1>Monedas</h1>
+    <div class="container">
+                <h1>Monedas</h1>
         <!-- <table>
             <thead>
                 <tr>
@@ -77,16 +77,21 @@
                     <th>Precio</th>
                     <th>Capitalización</th>
                     <!-- <th>Sparkline</th> -->
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody *ngFor="let coin of monedas" class="coin-row">
-                <tr (click)="mostrarDetalle(coin.item.id)">
+                <tr>
                     <td><img [src]="coin.image.thumb" alt=""></td>
                     <td>{{ coin.name }}</td>
                     <td>{{ coin.symbol }}</td>
                     <td>{{ coin.market_cap_rank }}</td>
                     <td>{{ coin.market_data.current_price.eur }} €</td>
                     <td>{{ coin.market_data.market_cap.eur }} $</td>
+                    <td>
+                        <a class="button-dejar" (click)="eliminarCrypto(coin.id)">Dejar de seguir</a>
+                        <a class="button-dejar" (click)="mostrarDetalle(coin.id)">Detalles</a>
+                    </td>
                     <!-- <td><img [src]="coin.item.data.sparkline" alt=""></td> -->
                 </tr>
             </tbody>

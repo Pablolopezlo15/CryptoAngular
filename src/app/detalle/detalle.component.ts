@@ -50,12 +50,17 @@ export class DetalleComponent implements OnInit{
 
   //   this.bd.subirDatosFS(this.bd.datos, this.bd.coleccion);
   // }
-
+  yaGuardadaError = "";
+  guardada = "";
   async guardarCrypto() {
     if (this.uid && this.cryptoDetalle && this.cryptoDetalle.id) {
       const yaGuardada = await this.bd.estaGuardada(this.uid, this.cryptoDetalle.id);
+
+      this.yaGuardadaError = "";
+      this.guardada = "";
+
       if (yaGuardada) {
-        console.log('Esta criptomoneda ya está guardada');
+        this.yaGuardadaError = "Ya tienes esta moneda en tu portfolio."
       } else {
         this.bd.datos = {
           uid: this.uid,
@@ -63,10 +68,13 @@ export class DetalleComponent implements OnInit{
         };
     
         this.bd.subirDatosFS(this.bd.datos, this.bd.coleccion);
+        this.guardada = "Moneda guardada en tu portfolio."
       }
     } else {
-      console.log('UID o ID de criptomoneda no definidos');
+      this.router.navigate(['/iniciarSesion']);
     }
   }
+
+
 
 }

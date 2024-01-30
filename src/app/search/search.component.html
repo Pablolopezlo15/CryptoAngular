@@ -37,7 +37,8 @@
                     <img [src]="crypto.large" alt="art">
                 </div>
                 <div class="card-text">
-                    <h2><a (click)="mostrarDetalle(crypto.coins.id)">{{ crypto.name }}</a></h2>
+                    <h2><a (click)="mostrarDetalle(crypto.id)">{{ crypto.name }}</a></h2>
+                    <p>Ranking: {{ crypto.market_cap_rank }}</p>
                 </div>
             </div>
             
@@ -72,8 +73,8 @@
                             <td>{{ coin.item.name }}</td>
                             <td>{{ coin.item.symbol }}</td>
                             <td>{{ coin.item.market_cap_rank }}</td>
-                            <td>{{ coin.item.data.price }} $</td>
-                            <td>{{ coin.item.data.market_cap }} $</td>
+                            <td>{{ coin.item.data.price }} </td>
+                            <td>{{ coin.item.data.market_cap }} </td>
                             <td><img [src]="coin.item.data.sparkline" alt=""></td>
                         </tr>
                     </tbody>

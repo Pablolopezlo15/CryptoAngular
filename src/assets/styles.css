@@ -60,6 +60,22 @@ a.button {
     -o-transition: all .4s ease-in-out;
 }
 
+a.button-dejar {
+    display: inline-flex;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 56px;
+    background-image: linear-gradient(to right, #2600fc, #ff00ea);
+    transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+}
+
 a.button:hover {
     background-image: linear-gradient(to left, #2600fc, #ff00ea);
     cursor: pointer;
@@ -218,7 +234,8 @@ header .right-header nav ul li a:hover {
 }
 
 .collection-carders .content .boxes .card .card-image {
-    height: 325px;
+    /* height: 325px; */
+    padding: 1rem;
     overflow: hidden;
 }
 
@@ -935,7 +952,7 @@ ul li:nth-child(even) .circle {
 
 .FAQ {
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding-left: var(--padding);
     padding-right: var(--padding);
 }

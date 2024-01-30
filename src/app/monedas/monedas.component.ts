@@ -7,6 +7,8 @@ import { RouterOutlet } from '@angular/router';
 import { Router, RouterModule } from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service';
+import { BasedatosService } from '../basedatos.service';
+import { getAuth } from "firebase/auth";
 
 
 @Component({
@@ -17,11 +19,13 @@ import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service
   styleUrl: './monedas.component.css'
 })
 export class MonedasComponent implements OnInit{
-
+  auth = getAuth();
+  user = this.auth.currentUser;
+  uid = this.user?.uid;
   monedas: any[] = [];
   id: string = "";
 
-  constructor(public ajax: PeticionesAjaxServiceService, private router: Router) { 
+  constructor(public ajax: PeticionesAjaxServiceService, private router: Router, private bd: BasedatosService) { 
   }
 
   ngOnInit() {
@@ -35,6 +39,11 @@ export class MonedasComponent implements OnInit{
     this.router.navigate(['/detalle', this.id]);
   }
 
+  eliminarCrypto(MonedaID:any) {
+    if (this.uid) {
+      this.bd.eliminarMoneda(this.uid, MonedaID);
+    }
+  }
 
 
 }

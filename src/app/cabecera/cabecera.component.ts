@@ -50,5 +50,13 @@ export class CabeceraComponent implements OnInit{
     this.router.navigate(['/monedas', this.uid]);
   }
 
+  nav = document.querySelector('.right-header nav');
+  toggleMenu() {
+    if (this.nav == null) {
+      return;
+    }
+    this.nav.classList.toggle('open');
+  }
+
 
 }
