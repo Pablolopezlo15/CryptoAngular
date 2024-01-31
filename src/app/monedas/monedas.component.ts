@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { PeticionesAjaxServiceService } from '../peticiones-ajax-service.service';
 import { BasedatosService } from '../basedatos.service';
 import { getAuth } from "firebase/auth";
+import { set } from 'firebase/database';
 
 
 @Component({
@@ -42,8 +43,11 @@ export class MonedasComponent implements OnInit{
   eliminarCrypto(MonedaID:any) {
     if (this.uid) {
       this.bd.eliminarMoneda(this.uid, MonedaID);
-      this.ajax.obtenerDatosFS();
-      this.monedas = this.ajax.getDatosAPI();
+      setTimeout(() => {
+        this.ajax.obtenerDatosFS();
+        this.monedas = this.ajax.getDatosAPI();;
+      }, 300);
+
     }
   }
 

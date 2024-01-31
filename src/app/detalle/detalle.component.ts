@@ -68,30 +68,41 @@ export class DetalleComponent implements OnInit, AfterViewInit{
     }
   }
 
-  ngAfterViewInit() {
+
+
+  async ngAfterViewInit() {
+    await this.getDataPoints();
+  }
+  
+  async getDataPoints() {
+    while (!this.cryptoDetalle) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+  
+    let dataPoints = [];
+    let sparkline = this.cryptoDetalle.market_data.sparkline_7d.price;
+  
+    for (let i = 0; i < sparkline.length; i++) {
+      dataPoints.push({
+        x: i,
+        y: sparkline[i]
+      });
+    }
+  
     let chart = new CanvasJS.Chart("chartContainer", {
       theme: "light2",
       animationEnabled: true,
       zoomEnabled: true,
       title: {
-        text: "Try Zooming and Panning"
+        text: "Gráfica"
       },
       data: [{
         type: "area",
-        dataPoints: this.getDataPoints()
+        dataPoints: dataPoints
       }]
     });
-
+  
     chart.render();
   }
-
-  getDataPoints() {
-    if (this.cryptoDetalle && this.cryptoDetalle.market_data && this.cryptoDetalle.market_data.sparkline_7d && this.cryptoDetalle.market_data.sparkline_7d.price) {
-      return this.cryptoDetalle.market_data.sparkline_7d.price.map((value:any, index:any) => ({ x: index, y: value }));
-    }
-    return [];
-  }
-
-  
 
 }
