@@ -12,3 +12,4 @@ Para instalar este proyecto:
   npm install
   npm run start
 ```
+![App Screenshot]([https://i.imgur.com/8UNKawH.png](https://i.imgur.com/wApJPfv.png))
